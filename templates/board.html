@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ДОСКА</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="board-header">
+            <h1>РЫБЧАТ</h1>
+            <div class="header-info">
+                <span class="post-count">Сообщений: {{ posts|length }}</span>
+                <div class="header-links">
+                    <a href="{{ url_for('welcome') }}">На главную</a>
+                    <a href="{{ url_for('emojis_list') }}">Эмодзи</a>
+                </div>
+            </div>
+        </div>
+        
+        <form action="/add" method="POST">
+            <input type="text" name="name" placeholder="Имя (3-16 символов)" maxlength="16">
+            <textarea name="message" placeholder="Ваше сообщение... Используйте :КОД: для эмодзи" rows="4" maxlength="255"></textarea>
+            <button type="submit">ОТПРАВИТЬ</button>
+        </form>
+        
+        <div class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                <div class="post">
+                    <div class="post-header">
+                        <span class="post-name">{{ post.name }}</span>
+                        <span class="post-id">#{{ post.id }}</span>
+                    </div>
+                    <div class="post-message">{{ post.message|safe }}</div>
+                    <div class="post-time">
+                        {{ post.created_at }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-posts">Пока нет сообщений. Будьте первым!</p>
+            {% endif %}
+        </div>
+        
+        <div class="footer">
+            <a href="{{ url_for('welcome') }}">← Вернуться на главную</a>
+        </div>
+    </div>
+</body>
+</html>

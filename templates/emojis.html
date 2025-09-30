@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Справочник</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>СПРАВОЧНИК ЭМОДЗИ</h1>
+            <div class="header-links">
+                <a href="{{ url_for('welcome') }}">На главную</a>
+                <a href="{{ url_for('board') }}">На доску</a>
+            </div>
+        </div>
+        
+        <div class="emoji-library">
+            {% if emojis %}
+                <div class="emoji-grid-large">
+                    {% for emoji in emojis %}
+                    <div class="emoji-card">
+                        <img src="/static/emojis/{{ emoji.filename }}" alt=":{{ emoji.code }}:">
+                        <div class="emoji-info">
+                            <strong>:{{ emoji.code }}:</strong>
+                            <small>Добавил: {{ emoji.uploaded_by }}</small>
+                            <small>{{ emoji.created_at[:10] }}</small>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-emojis">Эмодзи пока нет</p>
+            {% endif %}
+        </div>
+        
+        <div class="footer">
+            <a href="{{ url_for('welcome') }}">← Вернуться на главную</a>
+        </div>
+    </div>
+</body>
+</html>

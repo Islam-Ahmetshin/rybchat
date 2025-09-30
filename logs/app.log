@@ -1,0 +1,33 @@
+[2025-09-30 17:37:23,461] INFO in app: Starting Flask application...
+[2025-09-30 17:37:35,843] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:37:39,343] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:40:32,864] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:40:36,865] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:45:35,529] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:45:50,642] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:48:04,507] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:48:29,182] INFO in app: Starting Flask application...
+[2025-09-30 17:48:32,809] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:49:07,297] INFO in app: Welcome page accessed from IP 192.168.31.252
+[2025-09-30 17:49:07,493] WARNING in app: 404 error: http://192.168.31.252:5000/favicon.ico from IP 192.168.31.252
+[2025-09-30 17:49:15,865] INFO in app: Board accessed - no posts from IP 192.168.31.252
+[2025-09-30 17:50:16,252] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:50:18,358] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:51:09,503] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:51:13,242] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:51:17,537] INFO in app: Starting Flask application...
+[2025-09-30 17:51:22,630] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:52:06,700] INFO in app: Starting Flask application...
+[2025-09-30 17:52:08,598] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:53:56,357] INFO in app: Starting Flask application...
+[2025-09-30 17:53:59,322] INFO in app: Board accessed - no posts from IP 127.0.0.1
+[2025-09-30 17:54:01,928] INFO in app: Post created by Аноним from IP 127.0.0.1
+[2025-09-30 17:54:01,958] INFO in app: Board accessed with 1 posts from IP 127.0.0.1
+[2025-09-30 17:54:10,880] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:54:23,587] INFO in app: Emojis list accessed from IP 127.0.0.1
+[2025-09-30 17:54:27,658] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:55:12,348] INFO in app: Emoji :bomb: added by Бомба from IP 127.0.0.1
+[2025-09-30 17:55:12,379] INFO in app: Welcome page accessed from IP 127.0.0.1
+[2025-09-30 17:55:18,221] INFO in app: Board accessed with 1 posts from IP 127.0.0.1
+[2025-09-30 17:55:25,988] INFO in app: Post created by Аноним from IP 127.0.0.1
+[2025-09-30 17:55:26,011] INFO in app: Board accessed with 2 posts from IP 127.0.0.1

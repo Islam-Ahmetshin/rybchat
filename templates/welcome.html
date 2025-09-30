@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>РЫБЧАТ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>ДОБРО ПОЖАЛОВАТЬ В РЫБЧАТ!</h1>
+        
+        <div class="welcome-message">
+            <p>РЫБЧАТ - имиджборд для своих</p>
+        </div>
+        
+        <div class="rules">
+            <h2>Правила:</h2>
+            <ul>
+                <li>Имя: от 3 до 16 символов без пробелов</li>
+                <li>Текст: не более 255 символов</li>
+                <li>Сообщения не должны быть пустыми</li>
+            </ul>
+        </div>
+        
+        <!-- Статистика -->
+        <div class="stats">
+            <p>Сообщений: <strong>{{ posts_count }}</strong></p>
+            <p>Эмодзи: <strong>{{ emojis_count }}/1001</strong></p>
+        </div>
+        
+        <!-- Навигационные кнопки -->
+        <div class="enter-button">
+            <a href="{{ url_for('board') }}" class="btn">ВОЙТИ НА ДОСКУ</a>
+            <a href="{{ url_for('emojis_list') }}" class="btn">СПРАВОЧНИК ЭМОДЗИ</a>
+        </div>
+
+                <!-- Форма добавления эмодзи -->
+        <div class="emoji-form">
+            <h2>Добавить свой эмодзи</h2>
+            <form action="/add_emoji" method="POST" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Ваше имя" maxlength="16">
+                <input type="text" name="code" placeholder="Код (4 символа)" maxlength="4" pattern="[A-Za-z0-9]{4}">
+                <input type="file" name="emoji_image" accept=".jpg,.jpeg,.png" required>
+                <small>Максимум 120KB, только JPG/PNG</small>
+                <button type="submit">ДОБАВИТЬ ЭМОДЗИ</button>
+            </form>
+        </div>
+
+                <!-- Flash сообщения -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Предпросмотр эмодзи -->
+        {% if emojis %}
+        <div class="emoji-preview">
+            <h2>Последние эмодзи:</h2>
+            <div class="emoji-grid">
+                {% for emoji in emojis[:12] %}
+                <div class="emoji-item">
+                    <img src="/static/emojis/{{ emoji.filename }}" alt=":{{ emoji.code }}:">
+                    <span>:{{ emoji.code }}:</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
