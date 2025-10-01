@@ -1,20 +1,23 @@
+#!/var/www/u3279585/data/flaskenv/bin/python
 import sqlite3
-from flask import Flask, render_template, request, redirect, g, flash
+from flask import Flask, render_template, request, redirect, g, flash, jsonify
 import os
 import re
 import html
 import logging
 import time
 import secrets
+import json
+from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from werkzeug.utils import secure_filename
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_wtf.csrf import CSRFProtect, generate_csrf, CSRFError
-
 from flask_talisman import Talisman
 
 app = Flask(__name__)
+application = app
 csrf = CSRFProtect(app)
 app.config['WTF_CSRF_ENABLED'] = False
 
@@ -26,11 +29,11 @@ app.config.update(
     ALLOWED_EXTENSIONS={'png', 'jpg', 'jpeg'},
     SECRET_KEY=os.environ.get('SECRET_KEY', 'change-this-in-production-' + secrets.token_hex(32)),
     SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SECURE=False,  # True в продакшене с HTTPS
+    SESSION_COOKIE_SECURE=True,  # True в продакшене с HTTPS
     SESSION_COOKIE_SAMESITE='Lax',
     PERMANENT_SESSION_LIFETIME=1800,
     MAX_CONTENT_LENGTH=16 * 1024 * 1024,  # 16MB
-    WTF_CSRF_ENABLED=False, # НА ХОСТЕ True
+    WTF_CSRF_ENABLED=True, # НА ХОСТЕ True
     WTF_CSRF_TIME_LIMIT=3600
 )
 
@@ -284,6 +287,76 @@ def set_security_headers(response):
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     return response
 
+# API ДЛЯ АВТООБНОВЛЕНИЯ
+@app.route('/api/posts')
+def api_posts():
+    """API для получения новых постов (для автообновления)"""
+    try:
+        since = request.args.get('since', 0, type=float)
+        
+        db = get_db()
+        
+        # ПРАВИЛЬНЫЙ запрос для получения постов после указанного времени
+        if since > 0:
+            # Конвертируем Unix timestamp в datetime строку для SQLite
+            since_datetime = datetime.fromtimestamp(since).strftime('%Y-%m-%d %H:%M:%S')
+            query = '''
+                SELECT * FROM posts 
+                WHERE created_at > ? 
+                ORDER BY created_at DESC
+            '''
+            new_posts = db.execute(query, (since_datetime,)).fetchall()
+        else:
+            # Если since = 0, возвращаем пустой список
+            new_posts = []
+        
+        processed_posts = []
+        for post in new_posts:
+            processed_post = {
+                'id': post['id'],
+                'name': safe_render_text(post['name']),
+                'message': replace_emojis_in_text(post['message']),
+                'created_at': post['created_at'],
+                'timestamp': datetime.strptime(post['created_at'], '%Y-%m-%d %H:%M:%S').timestamp()
+            }
+            processed_posts.append(processed_post)
+        
+        # Получаем время последнего поста для следующего запроса
+        last_timestamp = since
+        if new_posts:
+            last_post = new_posts[0]
+            last_timestamp = datetime.strptime(last_post['created_at'], '%Y-%m-%d %H:%M:%S').timestamp()
+        
+        return jsonify({
+            'posts': processed_posts,
+            'last_timestamp': last_timestamp,
+            'count': len(processed_posts)
+        })
+    except Exception as e:
+        app.logger.error(f"API posts error: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@app.route('/api/board_stats')
+def api_board_stats():
+    """API для получения статистики доски"""
+    try:
+        db = get_db()
+        posts_count = db.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
+        last_post = db.execute('SELECT created_at FROM posts ORDER BY created_at DESC LIMIT 1').fetchone()
+        
+        last_post_time = None
+        if last_post:
+            last_post_time = datetime.strptime(last_post['created_at'], '%Y-%m-%d %H:%M:%S').timestamp()
+        
+        return jsonify({
+            'posts_count': posts_count,
+            'last_post_time': last_post_time,
+            'server_time': time.time()
+        })
+    except Exception as e:
+        app.logger.error(f"API stats error: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
 @app.route('/')
 def welcome():
     """Приветственная страница"""
@@ -324,7 +397,7 @@ def board():
         
         if not posts:
             app.logger.info(f"Board accessed - no posts from IP {ip_address}")
-            return render_template('board.html', posts=[])
+            return render_template('board.html', posts=[], last_update=time.time())
         
         # Заменяем эмодзи в сообщениях
         processed_posts = []
@@ -335,12 +408,20 @@ def board():
             processed_post['message'] = replace_emojis_in_text(post['message'])
             processed_posts.append(processed_post)
         
+        # Получаем время последнего поста
+        last_post_time = time.time()
+        if posts:
+            last_post_time = datetime.strptime(posts[0]['created_at'], '%Y-%m-%d %H:%M:%S').timestamp()
+        
         app.logger.info(f"Board accessed with {len(posts)} posts from IP {ip_address}")
-        return render_template('board.html', posts=processed_posts)
+        return render_template('board.html', 
+                             posts=processed_posts, 
+                             last_update=last_post_time,
+                             server_time=time.time())
     except Exception as e:
         app.logger.error(f"Error in board page for IP {ip_address}: {str(e)}")
         flash('Временная ошибка сервера', 'error')
-        return render_template('board.html', posts=[])
+        return render_template('board.html', posts=[], last_update=time.time())
     finally:
         duration = time.time() - start_time
         app.logger.debug(f"Board request from {ip_address} took {duration:.2f}s")
@@ -595,6 +676,5 @@ def ratelimit_error(e):
 
 if __name__ == '__main__':
     init_db()
-
     app.logger.info("Starting Flask application...")
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)

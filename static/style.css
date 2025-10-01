@@ -343,3 +343,252 @@ button:hover {
     font-style: italic;
     padding: 40px;
 }
+
+/* Добавляем после существующего CSS */
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .welcome-container,
+    .container {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+    
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .welcome-message,
+    .rules,
+    form,
+    .post,
+    .stats {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        margin: 5px;
+        display: block;
+        text-align: center;
+    }
+    
+    .enter-button {
+        margin: 20px 0;
+    }
+    
+    /* Шапка доски */
+    .board-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+    
+    .back-link {
+        font-size: 14px;
+    }
+    
+    /* Формы */
+    input, textarea {
+        padding: 10px;
+        font-size: 16px; /* Увеличиваем для удобства на мобильных */
+        margin-bottom: 12px;
+    }
+    
+    textarea {
+        min-height: 120px;
+    }
+    
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+        width: 100%;
+    }
+    
+    /* Посты */
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .post-id,
+    .post-time {
+        font-size: 11px;
+    }
+    
+    .post-name {
+        font-size: 16px;
+    }
+    
+    /* Эмодзи */
+    .emoji-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
+    .emoji-grid-large {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .emoji-item {
+        padding: 8px;
+    }
+    
+    .emoji-item img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .emoji-card {
+        padding: 12px;
+    }
+    
+    .emoji-card img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Flash сообщения */
+    .flash {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    body {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .emoji-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .emoji-grid-large {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Улучшения для касаний на мобильных */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover,
+    button:hover {
+        background-color: initial; /* Отключаем hover эффекты для касаний */
+    }
+    
+    .btn:active,
+    button:active {
+        background-color: #0000a0;
+        transform: scale(0.98);
+    }
+    
+    .back-link:active,
+    .footer a:active {
+        opacity: 0.7;
+    }
+}
+
+/* Оптимизация для портретной ориентации */
+@media (max-width: 768px) and (orientation: portrait) {
+    .welcome-container {
+        margin: 10px auto;
+    }
+    
+    .posts {
+        margin-bottom: 15px;
+    }
+}
+
+/* Оптимизация для ландшафтной ориентации на мобильных */
+@media (max-width: 900px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+    
+    .welcome-container,
+    .container {
+        max-width: 100%;
+        margin: 10px auto;
+    }
+    
+    .emoji-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .emoji-grid-large {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Улучшение читаемости на маленьких экранах */
+@media (max-width: 768px) {
+    .rules ul {
+        padding-left: 15px;
+    }
+    
+    .rules li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    
+    .post-message {
+        line-height: 1.5;
+        font-size: 15px;
+    }
+    
+    /* Увеличиваем область касания для интерактивных элементов */
+    .btn,
+    button,
+    .back-link,
+    .footer a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .back-link,
+    .footer a {
+        padding: 8px 0;
+    }
+}
+
+/* Предотвращение масштабирования при фокусе на iOS */
+@media (max-width: 768px) {
+    input, textarea {
+        font-size: 16px;
+        transform: scale(1);
+    }
+}

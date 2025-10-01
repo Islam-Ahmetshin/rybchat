@@ -2,8 +2,92 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ДОСКА</title>
+    <title>ДОСКА - РЫБЧАТ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        let lastUpdate = {{ last_update }};
+        let isChecking = false;
+
+        // Функция проверки новых сообщений
+        function checkNewPosts() {
+            if (isChecking) return; // Защита от параллельных запросов
+            
+            isChecking = true;
+            
+            fetch(`/api/posts?since=${lastUpdate}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.posts && data.posts.length > 0) {
+                        console.log('Найдено новых сообщений:', data.posts.length);
+                        
+                        // Добавляем новые посты
+                        data.posts.forEach(post => {
+                            addNewPost(post);
+                        });
+                        
+                        // ОБНОВЛЯЕМ lastUpdate только если получили новые посты
+                        lastUpdate = data.last_timestamp;
+                        
+                        // Обновляем счетчик сообщений
+                        updatePostsCount(data.posts.length);
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                .finally(() => {
+                    isChecking = false;
+                });
+        }
+
+        // Функция добавления нового поста
+        function addNewPost(post) {
+            const postsContainer = document.querySelector('.posts');
+            const postHTML = `
+                <div class="post">
+                    <div class="post-header">
+                        <span class="post-name">${post.name}</span>
+                        <span class="post-id">#${post.id}</span>
+                    </div>
+                    <div class="post-message">${post.message}</div>
+                    <div class="post-time">
+                        ${post.created_at}
+                    </div>
+                </div>
+            `;
+            
+            // Создаем элемент из HTML
+            const template = document.createElement('template');
+            template.innerHTML = postHTML.trim();
+            const newPostElement = template.content.firstChild;
+            
+            // Добавляем в начало
+            if (postsContainer.firstChild) {
+                postsContainer.insertBefore(newPostElement, postsContainer.firstChild);
+            } else {
+                // Если нет постов, заменяем сообщение "нет постов"
+                const noPostsMessage = postsContainer.querySelector('.no-posts');
+                if (noPostsMessage) {
+                    noPostsMessage.remove();
+                }
+                postsContainer.appendChild(newPostElement);
+            }
+        }
+
+        // Обновление счетчика сообщений
+        function updatePostsCount(newPostsCount) {
+            const postCountElement = document.querySelector('.post-count');
+            if (postCountElement) {
+                const currentText = postCountElement.textContent;
+                const currentCount = parseInt(currentText.replace('Сообщений: ', ''));
+                postCountElement.textContent = `Сообщений: ${currentCount + newPostsCount}`;
+            }
+        }
+
+        // Инициализация - проверяем каждые 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Автообновление запущено. Last update:', lastUpdate);
+            setInterval(checkNewPosts, 5000); // Увеличил до 5 секунд
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -19,6 +103,7 @@
         </div>
         
         <form action="/add" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="text" name="name" placeholder="Имя (3-16 символов)" maxlength="16">
             <textarea name="message" placeholder="Ваше сообщение... Используйте :КОД: для эмодзи" rows="4" maxlength="255"></textarea>
             <button type="submit">ОТПРАВИТЬ</button>

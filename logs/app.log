@@ -1,33 +1,79 @@
-[2025-09-30 17:37:23,461] INFO in app: Starting Flask application...
-[2025-09-30 17:37:35,843] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:37:39,343] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:40:32,864] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:40:36,865] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:45:35,529] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:45:50,642] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:48:04,507] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:48:29,182] INFO in app: Starting Flask application...
-[2025-09-30 17:48:32,809] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:49:07,297] INFO in app: Welcome page accessed from IP 192.168.31.252
-[2025-09-30 17:49:07,493] WARNING in app: 404 error: http://192.168.31.252:5000/favicon.ico from IP 192.168.31.252
-[2025-09-30 17:49:15,865] INFO in app: Board accessed - no posts from IP 192.168.31.252
-[2025-09-30 17:50:16,252] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:50:18,358] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:51:09,503] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:51:13,242] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:51:17,537] INFO in app: Starting Flask application...
-[2025-09-30 17:51:22,630] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:52:06,700] INFO in app: Starting Flask application...
-[2025-09-30 17:52:08,598] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:53:56,357] INFO in app: Starting Flask application...
-[2025-09-30 17:53:59,322] INFO in app: Board accessed - no posts from IP 127.0.0.1
-[2025-09-30 17:54:01,928] INFO in app: Post created by Аноним from IP 127.0.0.1
-[2025-09-30 17:54:01,958] INFO in app: Board accessed with 1 posts from IP 127.0.0.1
-[2025-09-30 17:54:10,880] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:54:23,587] INFO in app: Emojis list accessed from IP 127.0.0.1
-[2025-09-30 17:54:27,658] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:55:12,348] INFO in app: Emoji :bomb: added by Бомба from IP 127.0.0.1
-[2025-09-30 17:55:12,379] INFO in app: Welcome page accessed from IP 127.0.0.1
-[2025-09-30 17:55:18,221] INFO in app: Board accessed with 1 posts from IP 127.0.0.1
-[2025-09-30 17:55:25,988] INFO in app: Post created by Аноним from IP 127.0.0.1
-[2025-09-30 17:55:26,011] INFO in app: Board accessed with 2 posts from IP 127.0.0.1
+[2025-10-01 11:07:21,876] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:07:22,498] INFO in app: Board accessed with 5 posts from IP 178.176.86.120
+[2025-10-01 11:07:23,523] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:07:31,015] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:07:32,870] INFO in app: Welcome page accessed from IP 176.211.19.197
+[2025-10-01 11:07:32,972] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:07:34,734] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:07:36,343] INFO in app: Welcome page accessed from IP 176.211.19.197
+[2025-10-01 11:07:36,444] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:07:45,948] INFO in app: Board accessed with 5 posts from IP 176.211.19.197
+[2025-10-01 11:07:46,092] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:08:06,502] INFO in app: Post created by Аноним from IP 176.211.19.197
+[2025-10-01 11:08:06,571] INFO in app: Board accessed with 6 posts from IP 176.211.19.197
+[2025-10-01 11:08:06,674] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:08:17,532] INFO in app: Post created by Аноним from IP 176.211.19.197
+[2025-10-01 11:08:17,611] INFO in app: Board accessed with 7 posts from IP 176.211.19.197
+[2025-10-01 11:08:17,728] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 176.211.19.197
+[2025-10-01 11:09:31,699] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:09:31,841] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 178.176.86.120
+[2025-10-01 11:09:41,088] INFO in app: Board accessed with 7 posts from IP 178.176.86.120
+[2025-10-01 11:10:04,523] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:10:06,659] INFO in app: Board accessed with 7 posts from IP 178.176.86.120
+[2025-10-01 11:10:24,448] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:10:29,914] INFO in app: Emojis list accessed from IP 178.176.86.120
+[2025-10-01 11:10:31,554] INFO in app: Board accessed with 7 posts from IP 178.176.86.120
+[2025-10-01 11:10:33,473] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:10:48,662] INFO in app: Board accessed with 7 posts from IP 178.176.86.120
+[2025-10-01 11:10:49,666] INFO in app: Emojis list accessed from IP 178.176.86.120
+[2025-10-01 11:10:50,525] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:10:51,277] INFO in app: Board accessed with 7 posts from IP 178.176.86.120
+[2025-10-01 11:10:52,074] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:11:52,085] INFO in app: Welcome page accessed from IP 178.176.86.120
+[2025-10-01 11:12:41,611] INFO in app: Welcome page accessed from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:12:42,751] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:15:06,348] INFO in app: Welcome page accessed from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:15:06,965] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:17:04,586] INFO in app: Welcome page accessed from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:17:05,181] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2604:2dc0:305::4:0:d6
+[2025-10-01 11:22:24,049] INFO in app: Welcome page accessed from IP 35.174.14.177
+[2025-10-01 11:22:25,044] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 3.237.102.128
+[2025-10-01 11:22:26,185] INFO in app: Welcome page accessed from IP 107.21.91.93
+[2025-10-01 11:22:31,097] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 3.87.99.114
+[2025-10-01 11:27:42,181] INFO in app: Welcome page accessed from IP 185.203.132.199
+[2025-10-01 11:27:42,295] WARNING in app: 404 error: https://rybchat.ru/css/support_parent.css from IP 185.203.132.199
+[2025-10-01 11:27:42,349] WARNING in app: 404 error: https://rybchat.ru/js/lkk_ch.js from IP 185.203.132.199
+[2025-10-01 11:27:42,452] WARNING in app: 404 error: https://rybchat.ru/js/twint_ch.js from IP 185.203.132.199
+[2025-10-01 11:36:07,275] INFO in app: Welcome page accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:36:07,507] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:36:29,697] INFO in app: Welcome page accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:36:29,889] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:37,399] INFO in app: Welcome page accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:37,580] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:42,344] INFO in app: Board accessed with 7 posts from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:44,648] INFO in app: Board accessed with 7 posts from IP 149.154.161.204
+[2025-10-01 11:38:46,859] INFO in app: Welcome page accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:48,088] INFO in app: Board accessed with 7 posts from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:49,658] INFO in app: Welcome page accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:38:51,279] INFO in app: Emojis list accessed from IP 2a03:d000:8552:45fa:54d7:8bff:feca:e06d
+[2025-10-01 11:57:17,887] INFO in app: Welcome page accessed from IP 35.162.205.149
+[2025-10-01 11:57:23,855] INFO in app: Welcome page accessed from IP 35.162.205.149
+[2025-10-01 12:00:06,020] INFO in app: Welcome page accessed from IP 91.107.98.3
+[2025-10-01 12:00:06,551] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 91.107.98.3
+[2025-10-01 12:05:09,076] INFO in app: Welcome page accessed from IP 178.33.107.250
+[2025-10-01 12:09:00,799] INFO in app: Welcome page accessed from IP 87.236.176.168
+[2025-10-01 12:09:01,275] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 185.247.137.138
+[2025-10-01 12:09:01,519] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 185.247.137.18
+[2025-10-01 12:09:03,287] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 159.65.216.50
+[2025-10-01 12:09:03,408] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 128.199.8.140
+[2025-10-01 12:17:55,527] INFO in app: Welcome page accessed from IP 34.219.159.203
+[2025-10-01 12:17:58,722] INFO in app: Welcome page accessed from IP 34.219.159.203
+[2025-10-01 12:20:41,326] INFO in app: Welcome page accessed from IP 45.90.61.83
+[2025-10-01 12:20:42,119] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 45.90.61.83
+[2025-10-01 12:20:42,634] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 45.90.61.83
+[2025-10-01 12:22:53,647] INFO in app: Welcome page accessed from IP 89.104.101.224
+[2025-10-01 12:22:54,234] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 89.104.101.224
+[2025-10-01 12:22:55,195] WARNING in app: 404 error: https://rybchat.ru/favicon.ico from IP 89.104.101.224
+[2025-10-01 12:23:08,162] INFO in app: Welcome page accessed from IP 185.247.137.183
+[2025-10-01 12:29:18,504] INFO in app: Welcome page accessed from IP 95.165.140.108
+[2025-10-01 12:31:27,967] WARNING in app: 404 error: https://rybchat.ru/myteacher from IP 23.111.114.116
